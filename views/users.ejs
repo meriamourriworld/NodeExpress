@@ -1,0 +1,26 @@
+<% layout("./layout/boilerplate") %>
+
+<div class="d-flex flex-column w-100">
+    
+<h3 class="display-3 text-center mb-5">List of users</h3>
+<table class="table table-striped-columns table-bordered">
+<caption>Users</caption>
+<thead>
+        <tr>
+            <td class="bg-danger">NAME</td>
+            <td class="bg-danger">EMAIL</td>
+            <td class="bg-danger">PASSWORD</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% for (const user of data) { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.pass %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+</div>

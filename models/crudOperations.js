@@ -2,7 +2,7 @@ const {connect} = require("./connection");
 
 const selectUsers = async()=>
 {
-    const query = "SELECT name, email, pass FROM USERS";
+    const query = "SELECT id,name, email, pass FROM USERS";
     const data = await new Promise((resolve, reject)=>
     {
         connect.query(query, (err, data)=>{
