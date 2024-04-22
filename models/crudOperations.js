@@ -1,6 +1,6 @@
 const {connect} = require("./connection");
 
-selectUsers = async()=>
+const selectUsers = async()=>
 {
     const query = "SELECT name, email, pass FROM USERS";
     const data = await new Promise((resolve, reject)=>
@@ -13,7 +13,7 @@ selectUsers = async()=>
     return data;
 }
 
-addUser = async(name, email, pass)=>
+const addUser = async(name, email, pass)=>
 {
     let message;
     const query = `INSERT INTO users(name, email, pass) VALUES('${name}','${email}','${pass}')`;
@@ -28,7 +28,7 @@ addUser = async(name, email, pass)=>
     return message;
 }
 
-updateUser = async (id, name, email, pass)=>
+const updateUser = async (id, name, email, pass)=>
 {
     const query = `UPDATE USERS SET name='${name}', email='${email}', pass= '${pass}' WHERE id=${id}`;
     const message = await new Promise((resolve, reject)=>
@@ -42,4 +42,18 @@ updateUser = async (id, name, email, pass)=>
     return message;
 }
 
-module.exports = {selectUsers, addUser, updateUser};
+const deleteUser = async (id)=>
+{
+    const query = `DELETE FROM users WHERE id=${id}`;
+    const message = await new Promise((resolve, reject)=>
+    {
+        connect.query(query, (err)=>
+        {
+            if (err) reject(`Deleting a user ${id} failed => ${err}`);
+            else resolve(`Deleted successfully user : ${id}`);
+        });
+    });
+    return message;
+}
+
+module.exports = {selectUsers, addUser, updateUser, deleteUser};

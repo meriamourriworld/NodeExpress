@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router({mergeParams:true});
 const mysql = require("mysql2");
-const {selectUsers, addUser, updateUser} = require("../models/crudOperations");
+const {selectUsers, addUser, updateUser, deleteUser} = require("../models/crudOperations");
 
 
 
@@ -27,10 +27,12 @@ router.put("/:id", async(req, res)=>
 
     res.send("Update a user " + message);
 });
-/*
-router.delete("/:id", (req, res)=>
+
+router.delete("/:id", async(req, res)=>
 {
-    res.send("Delete a User");
+    const {id} = req.params;
+    const message = await deleteUser(id);
+    res.send("Delete a User " + message);
 });
-*/
+
 module.exports = router;
