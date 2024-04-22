@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router({mergeParams:true});
 const mysql = require("mysql2");
-const {selectUsers, addUser} = require("../models/crudOperations");
+const {selectUsers, addUser, updateUser} = require("../models/crudOperations");
 
 
 
@@ -11,9 +11,12 @@ router.get("/", async(req,res)=>
     res.json(data);
 });
 
-router.post("/", (req, res)=>
+router.post("/", async(req, res)=>
 {
-    res.send("Add a User");
+    const {name, email, pass} = req.body;
+    let message = await addUser(name, email, pass);
+    res.send("Add a User " + message);
+    
 });
 /*
 router.put("/:id", (req, res)=>
