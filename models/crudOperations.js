@@ -30,7 +30,16 @@ addUser = async(name, email, pass)=>
 
 updateUser = async (id, name, email, pass)=>
 {
-    const query = `UPDATE USERS SET name='${name}', email='${email}', pass= '${pass}'`
+    const query = `UPDATE USERS SET name='${name}', email='${email}', pass= '${pass}' WHERE id=${id}`;
+    const message = await new Promise((resolve, reject)=>
+    {
+        connect.query(query, (err)=>
+        {
+            if(err) reject(`Failed updating a user with id : ${id} => ${err}`);
+            else resolve(`Update user ${id} successfully applied`);
+        });
+    });
+    return message;
 }
 
 module.exports = {selectUsers, addUser, updateUser};

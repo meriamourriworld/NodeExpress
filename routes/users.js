@@ -18,12 +18,16 @@ router.post("/", async(req, res)=>
     res.send("Add a User " + message);
     
 });
-/*
-router.put("/:id", (req, res)=>
-{
-    res.send("Update a user");
-});
 
+router.put("/:id", async(req, res)=>
+{
+    const {id} = req.params;
+    const {name, email, pass} = req.body;
+    const message = await updateUser(id, name, email, pass);
+
+    res.send("Update a user " + message);
+});
+/*
 router.delete("/:id", (req, res)=>
 {
     res.send("Delete a User");
