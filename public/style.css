@@ -24,7 +24,6 @@ button
     background-color: transparent;
 }
 #tbody{
-    max-height:100px;
-    overflow-y:scroll;
-    background-color: black;
+    max-height:100px !important;
+    overflow-y: scroll !important;
     }
