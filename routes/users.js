@@ -31,8 +31,8 @@ router.put("/:id", async(req, res)=>
     console.log(name,email,pass,id)
 
     const message = await updateUser(id, name, email, pass);
-
-    res.send(message);
+    console.log(message);
+    res.redirect("/users");
 });
 
 router.delete("/:id", async(req, res)=>
