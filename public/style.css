@@ -14,3 +14,7 @@ main
 {
     min-height: 500px;
 }
+.pointer
+{
+    cursor: pointer;
+}
