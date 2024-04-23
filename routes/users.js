@@ -11,12 +11,17 @@ router.get("/", async(req,res)=>
     res.render("users", {data});
 });
 
+router.get("/new",(req, res)=>
+{
+    res.render("newUser");
+});
+
 router.post("/", async(req, res)=>
 {
     const {name, email, pass} = req.body;
     let message = await addUser(name, email, pass);
-    res.send(message);
-    
+    console.log(message)
+    res.redirect("/users");
 });
 
 router.put("/:id", async(req, res)=>
