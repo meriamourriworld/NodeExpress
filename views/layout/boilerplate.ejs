@@ -10,8 +10,16 @@
 <body class="d-flex flex-column vh-100">
     
     <%- include("../partials/header") %>
-
+    <% if(messages && messages.length) {%>
+        <div class="alert alert-success alert-dismissible col-6">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <%= messages %>
+          </div>
+    <% }%> 
+     
+    
     <main class="container d-flex align-items-center">
+
         <%- body %>
     </main>
 
