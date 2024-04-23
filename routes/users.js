@@ -6,7 +6,7 @@ const {selectUsers, addUser, updateUser, deleteUser} = require("../models/crudOp
 
 
 
-// config
+// configuration
 router.use(session({secret:"mySecret",resave: false,saveUninitialized: true}));
 router.use(flash());
 router.use((req,res,next)=>
