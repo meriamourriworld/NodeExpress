@@ -7,7 +7,6 @@ const {selectUsers, addUser, updateUser, deleteUser} = require("../models/crudOp
 router.get("/", async(req,res)=>
 {
     const data = await selectUsers();
-    console.log(data)
     res.render("users", {data});
 });
 
@@ -28,6 +27,9 @@ router.put("/:id", async(req, res)=>
 {
     const {id} = req.params;
     const {name, email, pass} = req.body;
+    console.log("UPDATING")
+    console.log(name,email,pass,id)
+
     const message = await updateUser(id, name, email, pass);
 
     res.send(message);
@@ -37,7 +39,8 @@ router.delete("/:id", async(req, res)=>
 {
     const {id} = req.params;
     const message = await deleteUser(id);
-    res.send(message);
+    console.log(message)
+    res.redirect("/users");
 });
 
 module.exports = router;
