@@ -30,6 +30,7 @@ const addUser = async(name, email, pass)=>
 
 const updateUser = async (id, name, email, pass)=>
 {
+    // console.log(id,name,email,pass);
     const query = `UPDATE USERS SET name='${name}', email='${email}', pass= '${pass}' WHERE id=${id}`;
     const message = await new Promise((resolve, reject)=>
     {
