@@ -27,5 +27,12 @@ app.get("/", (req, res)=>
 });
 
 
+app.use("*", (req, res,err)=>
+{
+    const status = 404;
+    const message = err.message;
+    res.render("error", {status, message});
+})
+
 app.listen(3000, ()=>console.log(`Listening on port  ${PORT} ...`));
 
